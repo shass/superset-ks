@@ -172,6 +172,8 @@ services:
         required: false
     depends_on: *superset-depends-on
     volumes: *superset-volumes
+    ports:
+      - "9000:9000"
 
   superset-worker:
     build:

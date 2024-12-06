@@ -31,6 +31,7 @@ export enum VizType {
   CountryMap = 'country_map',
   DistBar = 'dist_bar',
   EventFlow = 'event_flow',
+  ExternalLink = 'external-link',
   Funnel = 'funnel',
   Gauge = 'gauge_chart',
   Graph = 'graph_chart',
