@@ -1,0 +1,28 @@
+{
+  "name": "@superset-ui/plugin-chart-external-link",
+  "version": "0.0.1",
+  "description": "Superset Chart Plugin for External Link Generation",
+  "sideEffects": false,
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "lib/*",
+    "esm/*",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "npm run build:cjs && npm run build:esm",
+    "build:cjs": "tsc -p tsconfig.json",
+    "build:esm": "tsc -p tsconfig.json --module es2015 --outDir esm",
+    "clean": "rm -rf lib esm"
+  },
+  "peerDependencies": {
+    "@superset-ui/core": "*",
+    "@superset-ui/chart-controls": "*",
+    "react": "^16.13.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
