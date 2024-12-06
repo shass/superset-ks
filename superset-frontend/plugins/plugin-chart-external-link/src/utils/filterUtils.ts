@@ -63,10 +63,12 @@ export function buildFinalUrl(baseUrl: string, filters: Record<string, any>) {
     // Добавляем фильтры как параметры
     Object.entries(filters).forEach(([key, value]) => {
       if (value !== null && value !== undefined) {
+        const paramKey = encodeURIComponent(`getObject ${key}`);
+
         if (Array.isArray(value) || typeof value === 'object') {
-          params.append(key, JSON.stringify(value));
+          params.append(paramKey, JSON.stringify(value));
         } else {
-          params.append(key, String(value));
+          params.append(paramKey, String(value));
         }
       }
     });
