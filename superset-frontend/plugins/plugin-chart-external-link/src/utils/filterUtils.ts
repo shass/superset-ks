@@ -15,40 +15,40 @@ export function getActiveFilters(formData: any) {
   }
 
   // 2. Проверяем dataMask (native filters)
-  // if (formData.dataMask) {
-  //   Object.values(formData.dataMask).forEach((mask: any) => {
-  //     if (mask.extraFormData?.filters) {
-  //       mask.extraFormData.filters.forEach(addFilter);
-  //     }
-  //     if (mask.filterState?.value !== undefined) {
-  //       const { id } = mask;
-  //       filters[`filter_${id}`] = mask.filterState.value;
-  //     }
-  //   });
-  // }
+  if (formData.dataMask) {
+    Object.values(formData.dataMask).forEach((mask: any) => {
+      if (mask.extraFormData?.filters) {
+        mask.extraFormData.filters.forEach(addFilter);
+      }
+      // if (mask.filterState?.value !== undefined) {
+      //   const { id } = mask;
+      //   filters[`filter_${id}`] = mask.filterState.value;
+      // }
+    });
+  }
 
-  // 3. Проверяем adhoc_filters
-  // if (Array.isArray(formData.adhoc_filters)) {
-  //   formData.adhoc_filters.forEach((filter: any) => {
-  //     if (filter.subject && filter.comparator !== undefined) {
-  //       filters[filter.subject] = filter.comparator;
-  //     }
-  //   });
-  // }
+  // // 3. Проверяем adhoc_filters
+  if (Array.isArray(formData.adhoc_filters)) {
+    formData.adhoc_filters.forEach((filter: any) => {
+      if (filter.subject && filter.comparator !== undefined) {
+        filters[filter.subject] = filter.comparator;
+      }
+    });
+  }
 
-  // // 4. Проверяем extra_filters
-  // if (Array.isArray(formData.extra_filters)) {
-  //   formData.extra_filters.forEach(addFilter);
-  // }
+  // 4. Проверяем extra_filters
+  if (Array.isArray(formData.extra_filters)) {
+    formData.extra_filters.forEach(addFilter);
+  }
 
   // 5. Проверяем filterConfigs
-  // if (Array.isArray(formData.filterConfigs)) {
-  //   formData.filterConfigs.forEach((config: any) => {
-  //     if (config.column && config.value !== undefined) {
-  //       filters[config.column] = config.value;
-  //     }
-  //   });
-  // }
+  if (Array.isArray(formData.filterConfigs)) {
+    formData.filterConfigs.forEach((config: any) => {
+      if (config.column && config.value !== undefined) {
+        filters[config.column] = config.value;
+      }
+    });
+  }
 
   return filters;
 }
