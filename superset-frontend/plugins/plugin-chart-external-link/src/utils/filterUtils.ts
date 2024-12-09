@@ -55,7 +55,7 @@ export function getActiveFilters(formData: any) {
 
 export function buildFinalUrl(baseUrl: string, filters: Record<string, any>) {
   // Берем только домен из baseUrl
-  const url = new URL(baseUrl || 'https://example.com');
+  const url = new URL(baseUrl || 'https://teamvalue.ks.works');
 
   try {
     const params = new URLSearchParams();

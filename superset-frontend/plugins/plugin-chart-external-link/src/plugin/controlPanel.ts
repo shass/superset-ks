@@ -14,7 +14,7 @@ const config: ControlPanelConfig = {
               type: 'TextControl',
               label: t('Base URL'),
               description: t('Base URL for external link'),
-              default: 'https://example.com',
+              default: 'https://teamvalue.ks.works',
             },
           },
         ],
