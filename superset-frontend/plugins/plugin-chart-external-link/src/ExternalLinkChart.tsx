@@ -19,13 +19,13 @@ const StyledContainer = styled.div<{ height: number; width: number }>`
 `;
 
 function ExternalLinkChart(props: ExternalLinkProps) {
-  const { width, height, baseUrl, formData } = props;
+  const { width, height, formData } = props;
 
   const [activeFilters, setActiveFilters] = useState(
     getActiveFilters(formData),
   );
   const [finalUrl, setFinalUrl] = useState<string>(
-    buildFinalUrl(baseUrl, activeFilters),
+    buildFinalUrl(formData.baseUrl, activeFilters),
   );
 
   useEffect(() => {
@@ -33,7 +33,7 @@ function ExternalLinkChart(props: ExternalLinkProps) {
   }, [formData]);
 
   useEffect(() => {
-    setFinalUrl(buildFinalUrl(baseUrl, activeFilters));
+    setFinalUrl(buildFinalUrl(formData.baseUrl, activeFilters));
   }, [activeFilters]);
 
   return (
