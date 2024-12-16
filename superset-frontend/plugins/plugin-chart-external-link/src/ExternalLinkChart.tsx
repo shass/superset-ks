@@ -75,7 +75,7 @@ function ExternalLinkChart(props: ExternalLinkProps) {
           display: 'block',
           marginTop: '20px',
           padding: '10px',
-          background: '#1890ff',
+          background: '#0000A0',
           color: '#ffffff',
           textAlign: 'center',
           borderRadius: '4px',

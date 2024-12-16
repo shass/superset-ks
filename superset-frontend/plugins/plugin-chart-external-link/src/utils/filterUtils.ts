@@ -54,11 +54,18 @@ export function getActiveFilters(formData: any) {
 }
 
 export function buildFinalUrl(baseUrl: string, filters: Record<string, any>) {
-  // Берем только домен из baseUrl
+  // Создаем URL объект из baseUrl или используем дефолтный
   const url = new URL(baseUrl || 'https://teamvalue.ks.works');
 
   try {
+    // Получаем все существующие параметры из исходного URL
+    const originalParams = new URLSearchParams(url.search);
     const params = new URLSearchParams();
+
+    // Копируем все оригинальные параметры
+    originalParams.forEach((value, key) => {
+      params.append(key, value);
+    });
 
     // Добавляем фильтры как параметры
     Object.entries(filters).forEach(([key, value]) => {
@@ -73,8 +80,16 @@ export function buildFinalUrl(baseUrl: string, filters: Record<string, any>) {
       }
     });
 
-    // Формируем итоговый URL: домен + параметры
-    return `${url.origin}${url.pathname === '/' ? '' : url.pathname}?${params.toString()}`;
+    // Формируем итоговый URL
+    const path = url.pathname === '/' ? '' : url.pathname;
+    const hash = url.hash
+      ? url.hash.startsWith('/#')
+        ? url.hash
+        : `/#${url.hash.slice(1)}`
+      : '';
+    const search = params.toString() ? `?${params.toString()}` : '';
+
+    return `${url.origin}${path}${hash}${search}`;
   } catch (e) {
     console.error('Error building URL:', e);
     return baseUrl;
