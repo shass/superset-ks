@@ -84,11 +84,11 @@ function ExternalLinkChart(props: ExternalLinkProps) {
       >
         Перейти на KS
       </a>
-      <div style={{ marginTop: '10px', wordBreak: 'break-all' }}>
-        <small>
-          <b>Итоговый URL:</b> {decodeURIComponent(finalUrl)}
-        </small>
-      </div>
+      {/* <div style={{ marginTop: '10px', wordBreak: 'break-all' }}> */}
+      {/*  <small> */}
+      {/*    <b>Итоговый URL:</b> {decodeURIComponent(finalUrl)} */}
+      {/*  </small> */}
+      {/* </div> */}
     </StyledContainer>
   );
 }
